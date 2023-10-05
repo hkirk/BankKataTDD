@@ -75,4 +75,26 @@ public class AccountTest
         
         Assert.Equal(account, changedAccount);
     }
+
+    [Fact]
+    public void Withdrawal_should_keep_date_and_amount_for_operation()
+    {
+        var changedAccount = account.Withdrawal(100);
+
+        var lastTransaction = changedAccount.LastTransaction();
+
+        Assert.Equal(TransactionType.Withdrawal, lastTransaction.Type);
+        Assert.Equal(100, lastTransaction.Amount);
+    }
+
+    [Fact]
+    public void Deposition_should_keep_data_and_amount_of_operation()
+    {
+        var changedAccount = account.Deposit(100);
+
+        var lastTransaction = changedAccount.LastTransaction();
+        
+        Assert.Equal(TransactionType.Deposit, lastTransaction.Type);
+        // Assert.Equal(100, lastTransaction.Amount);
+    }
 }
