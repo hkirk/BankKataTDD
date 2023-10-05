@@ -22,4 +22,14 @@ public class Account
 
         return this;
     }
+
+    public Account Withdrawal(int amount)
+    {
+        if (amount > 0)
+        {
+            return new Account(Balance - amount);
+        }
+
+        return this;
+    }
 }
